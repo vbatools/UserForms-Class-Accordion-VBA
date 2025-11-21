@@ -130,30 +130,30 @@ End Sub
 ### Код
 ```vba
 Sub CreateNestedAccordion()
-    Dim mainAcardion As clsAccordion
-    Set mainAcardion = New clsAccordion
-    mainAcardion.SetParentForm Me
+    Dim mainaccordion As clsAccordion
+    Set mainaccordion = New clsAccordion
+    mainaccordion.SetParentForm Me
     
     ' Создаем основной аккордеон
-    mainAcardion.AddItem "Категория 1", ""
-    mainAcardion.AddItem "Категория 2", ""
-    mainAcardion.AddItem "Категория 3", ""
+    mainaccordion.AddItem "Категория 1", ""
+    mainaccordion.AddItem "Категория 2", ""
+    mainaccordion.AddItem "Категория 3", ""
     
     ' Для второй категории создаем вложенный аккордеон
-    Dim nestedAcardion As clsAccordion
-    Set nestedAcardion = New clsAccordion
-    nestedAcardion.SetParentForm Me
-    nestedAcardion.HeaderHeight = 25 ' Меньшая высота для вложенных элементов
+    Dim nestedaccordion As clsAccordion
+    Set nestedaccordion = New clsAccordion
+    nestedaccordion.SetParentForm Me
+    nestedaccordion.HeaderHeight = 25 ' Меньшая высота для вложенных элементов
     
-    nestedAcardion.AddItem "Подкатегория 2.1", "Подробная информация о подкатегории 2.1"
-    nestedAcardion.AddItem "Подкатегория 2.2", "Подробная информация о подкатегории 2.2"
-    nestedAcardion.AddItem "Подкатегория 2.3", "Подробная информация о подкатегории 2.3"
+    nestedaccordion.AddItem "Подкатегория 2.1", "Подробная информация о подкатегории 2.1"
+    nestedaccordion.AddItem "Подкатегория 2.2", "Подробная информация о подкатегории 2.2"
+    nestedaccordion.AddItem "Подкатегория 2.3", "Подробная информация о подкатегории 2.3"
     
     ' Вставляем вложенный аккордеон в содержимое второй категории
     ' Это требует дополнительной реализации в классе
-    ' mainAcardion.Items(1).SetContentControl nestedAcardion
+    ' mainaccordion.Items(1).SetContentControl nestedaccordion
     
-    mainAcardion.CreateControls
+    mainaccordion.CreateControls
 End Sub
 ```
 

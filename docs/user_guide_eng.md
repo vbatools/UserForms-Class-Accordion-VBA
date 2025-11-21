@@ -29,7 +29,7 @@ accordion.CreateControls ' Create the controls
 Use the `AddItem` method to add new items:
 
 ```vba
-acardion.AddItem "New Header", "New Content"
+accordion.AddItem "New Header", "New Content"
 ```
 
 ### Managing State
@@ -37,8 +37,8 @@ acardion.AddItem "New Header", "New Content"
 You can control the state of items:
 
 ```vba
-acardion.ExpandAll ' Expand all items
-acardion.CollapseAll ' Collapse all items
+accordion.ExpandAll ' Expand all items
+accordion.CollapseAll ' Collapse all items
 ```
 
 ## Advanced Features
@@ -48,7 +48,7 @@ acardion.CollapseAll ' Collapse all items
 The class allows customization of appearance:
 
 ```vba
-acardion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Header and content colors
+accordion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Header and content colors
 ```
 
 ### Animation Settings
@@ -56,7 +56,7 @@ acardion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Header and content colo
 Control animation speed:
 
 ```vba
-acardion.SetAnimation 5 ' Set animation speed (1-10)
+accordion.SetAnimation 5 ' Set animation speed (1-10)
 ```
 
 ### Working with Individual Items
@@ -65,7 +65,7 @@ Access individual items:
 
 ```vba
 Dim item As clsAccordionItem
-Set item = acardion.Items(0) ' Get the first item
+Set item = accordion.Items(0) ' Get the first item
 item.Expand ' Expand a specific item
 ```
 
@@ -75,14 +75,14 @@ item.Expand ' Expand a specific item
 
 ```vba
 Sub CreateSimpleAccordion()
-    Dim acardion As New clsAccordion
-    acardion.SetParentForm Me
+    Dim accordion As New clsAccordion
+    accordion.SetParentForm Me
     
-    acardion.AddItem "Description", "This is the description section"
-    acardion.AddItem "Settings", "This is the settings section"
-    acardion.AddItem "Help", "This is the help information section"
+    accordion.AddItem "Description", "This is the description section"
+    accordion.AddItem "Settings", "This is the settings section"
+    accordion.AddItem "Help", "This is the help information section"
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -90,20 +90,20 @@ End Sub
 
 ```vba
 Sub CreateStyledAccordion()
-    Dim acardion As New clsAccordion
-    acardion.SetParentForm Me
+    Dim accordion As New clsAccordion
+    accordion.SetParentForm Me
     
     ' Add items
-    acardion.AddItem "Item 1", "Content of first item"
-    acardion.AddItem "Item 2", "Content of second item"
+    accordion.AddItem "Item 1", "Content of first item"
+    accordion.AddItem "Item 2", "Content of second item"
     
     ' Style settings
-    acardion.SetStyle RGB(70, 130, 180), RGB(240, 248, 255) ' Header and content styles
+    accordion.SetStyle RGB(70, 130, 180), RGB(240, 248, 255) ' Header and content styles
     
     ' Animation settings
-    acardion.SetAnimation 7
+    accordion.SetAnimation 7
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -114,7 +114,7 @@ End Sub
 You can change the header height by setting the `HeaderHeight` property:
 
 ```vba
-acardion.HeaderHeight = 30 ' Set header height to 30 pixels
+accordion.HeaderHeight = 30 ' Set header height to 30 pixels
 ```
 
 ### Can I add items after creating controls?

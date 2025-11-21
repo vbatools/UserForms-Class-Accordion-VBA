@@ -29,7 +29,7 @@ accordion.CreateControls ' Создаем элементы управления
 Используйте метод `AddItem` для добавления новых элементов:
 
 ```vba
-acardion.AddItem "Новый заголовок", "Новое содержимое"
+accordion.AddItem "Новый заголовок", "Новое содержимое"
 ```
 
 ### Управление состоянием
@@ -37,8 +37,8 @@ acardion.AddItem "Новый заголовок", "Новое содержимо
 Вы можете управлять состоянием элементов:
 
 ```vba
-acardion.ExpandAll ' Развернуть все элементы
-acardion.CollapseAll ' Свернуть все элементы
+accordion.ExpandAll ' Развернуть все элементы
+accordion.CollapseAll ' Свернуть все элементы
 ```
 
 ## Расширенные возможности
@@ -48,7 +48,7 @@ acardion.CollapseAll ' Свернуть все элементы
 Класс позволяет настраивать внешний вид:
 
 ```vba
-acardion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Цвета заголовка и содержимого
+accordion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Цвета заголовка и содержимого
 ```
 
 ### Настройка анимации
@@ -56,7 +56,7 @@ acardion.SetStyle RGB(20, 200, 200), RGB(255, 25, 255) ' Цвета заголо
 Управление скоростью анимации:
 
 ```vba
-acardion.SetAnimation 5 ' Установка скорости анимации (1-10)
+accordion.SetAnimation 5 ' Установка скорости анимации (1-10)
 ```
 
 ### Работа с отдельными элементами
@@ -65,7 +65,7 @@ acardion.SetAnimation 5 ' Установка скорости анимации (
 
 ```vba
 Dim item As clsAccordionItem
-Set item = acardion.Items(0) ' Получаем первый элемент
+Set item = accordion.Items(0) ' Получаем первый элемент
 item.Expand ' Развертываем конкретный элемент
 ```
 
@@ -75,14 +75,14 @@ item.Expand ' Развертываем конкретный элемент
 
 ```vba
 Sub CreateSimpleAccordion()
-    Dim acardion As New clsAccordion
-    acardion.SetParentForm Me
+    Dim accordion As New clsAccordion
+    accordion.SetParentForm Me
     
-    acardion.AddItem "Описание", "Это раздел с описанием"
-    acardion.AddItem "Настройки", "Это раздел с настройками"
-    acardion.AddItem "Помощь", "Это раздел с информацией о помощи"
+    accordion.AddItem "Описание", "Это раздел с описанием"
+    accordion.AddItem "Настройки", "Это раздел с настройками"
+    accordion.AddItem "Помощь", "Это раздел с информацией о помощи"
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -90,20 +90,20 @@ End Sub
 
 ```vba
 Sub CreateStyledAccordion()
-    Dim acardion As New clsAccordion
-    acardion.SetParentForm Me
+    Dim accordion As New clsAccordion
+    accordion.SetParentForm Me
     
     ' Добавляем элементы
-    acardion.AddItem "Элемент 1", "Содержимое первого элемента"
-    acardion.AddItem "Элемент 2", "Содержимое второго элемента"
+    accordion.AddItem "Элемент 1", "Содержимое первого элемента"
+    accordion.AddItem "Элемент 2", "Содержимое второго элемента"
     
     ' Настройка стиля
-    acardion.SetStyle RGB(70, 130, 180), RGB(240, 248, 255) ' Стиль заголовков и содержимого
+    accordion.SetStyle RGB(70, 130, 180), RGB(240, 248, 255) ' Стиль заголовков и содержимого
     
     ' Настройка анимации
-    acardion.SetAnimation 7
+    accordion.SetAnimation 7
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -114,7 +114,7 @@ End Sub
 Вы можете изменить высоту заголовков, установив свойство `HeaderHeight`:
 
 ```vba
-acardion.HeaderHeight = 30 ' Устанавливаем высоту заголовков в 30 пикселей
+accordion.HeaderHeight = 30 ' Устанавливаем высоту заголовков в 30 пикселей
 ```
 
 ### Можно ли добавлять элементы после создания контролов?

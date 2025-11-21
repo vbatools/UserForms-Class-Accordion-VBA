@@ -130,30 +130,30 @@ Creating a multi-level accordion with the ability to nest elements within each o
 ### Code
 ```vba
 Sub CreateNestedAccordion()
-    Dim mainAcardion As clsAccordion
-    Set mainAcardion = New clsAccordion
-    mainAcardion.SetParentForm Me
+    Dim mainaccordion As clsAccordion
+    Set mainaccordion = New clsAccordion
+    mainaccordion.SetParentForm Me
     
     ' Create main accordion
-    mainAcardion.AddItem "Category 1", ""
-    mainAcardion.AddItem "Category 2", ""
-    mainAcardion.AddItem "Category 3", ""
+    mainaccordion.AddItem "Category 1", ""
+    mainaccordion.AddItem "Category 2", ""
+    mainaccordion.AddItem "Category 3", ""
     
     ' Create nested accordion for the second category
-    Dim nestedAcardion As clsAccordion
-    Set nestedAcardion = New clsAccordion
-    nestedAcardion.SetParentForm Me
-    nestedAcardion.HeaderHeight = 25 ' Smaller height for nested items
+    Dim nestedaccordion As clsAccordion
+    Set nestedaccordion = New clsAccordion
+    nestedaccordion.SetParentForm Me
+    nestedaccordion.HeaderHeight = 25 ' Smaller height for nested items
     
-    nestedAcardion.AddItem "Subcategory 2.1", "Detailed information about subcategory 2.1"
-    nestedAcardion.AddItem "Subcategory 2.2", "Detailed information about subcategory 2.2"
-    nestedAcardion.AddItem "Subcategory 2.3", "Detailed information about subcategory 2.3"
+    nestedaccordion.AddItem "Subcategory 2.1", "Detailed information about subcategory 2.1"
+    nestedaccordion.AddItem "Subcategory 2.2", "Detailed information about subcategory 2.2"
+    nestedaccordion.AddItem "Subcategory 2.3", "Detailed information about subcategory 2.3"
     
     ' Insert nested accordion into the content of the second category
     ' This requires additional implementation in the class
-    ' mainAcardion.Items(1).SetContentControl nestedAcardion
+    ' mainaccordion.Items(1).SetContentControl nestedaccordion
     
-    mainAcardion.CreateControls
+    mainaccordion.CreateControls
 End Sub
 ```
 
