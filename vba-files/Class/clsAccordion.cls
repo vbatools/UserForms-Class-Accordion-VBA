@@ -9,6 +9,15 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
+'========================================================================================
+' Class: clsAccordion
+' Author: VBATools
+' Version: 1.0.1
+' Creation Date: 21.11.2025 10:59
+' Last Update Date: 21.11.2025 18:18
+' License: Apache License
+'========================================================================================
+
 ' Private variables for managing accordion control elements and state
 Private mParentFrame As MSForms.Frame  ' Parent frame where accordion items are placed
 Private mItems      As Collection      ' Collection of accordion items
@@ -16,6 +25,18 @@ Private mTopItem    As Single          ' Top position for next item
 Private mItemCount  As Long            ' Count of items (using Long instead of Byte for larger capacity)
 Private mCloseAfterOpen As Boolean     ' Flag: close other items when opening a new one
 Public mbScrolShow  As Boolean         ' Flag: scrollbar is visible
+
+Public Property Get Version() As String
+    ' Returns version information about the class
+    ' Example: Debug.Print slider.Version
+    Version = "Class: clsAccordion" & vbNewLine & _
+            "Author: VBATools" & vbNewLine & _
+            "Version: 1.0.1" & vbNewLine & _
+            "Date of creation: 21.11.2025 10:59" & vbNewLine & _
+            "Date of update: 21.11.2025 18:18" & vbNewLine & _
+            "License: Apache" & vbNewLine & _
+            "Description: Custom accordion control for VBA UserForms with expandable/collapsible sections, supporting dynamic item management, customizable appearance, and automatic layout adjustment"
+End Property
 
 ' Open or close all items
 ' Parameters:

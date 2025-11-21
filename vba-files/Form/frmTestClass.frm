@@ -4,7 +4,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmTestClass
    ClientHeight    =   6390
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   12480
+   ClientWidth     =   14235
    OleObjectBlob   =   "frmTestClass.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -18,6 +18,12 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Dim accord          As clsAccordion
+
+Private Sub btnRemoveAll_Click()
+    lbRemoveAll.Caption = accord.Count
+    accord.RemoveAll
+    Call accord.AddItem("Settings Panel", "Contains application settings and configuration options", False, 20, 210, vbBlue)
+End Sub
 
 Private Sub chbOpenAll_Change()
     Call accord.OpenAll(chbOpenAll.Value)
@@ -61,12 +67,6 @@ Private Sub chbVisible_Click()
     accord.item(2).Visible = chbVisible.Value
 End Sub
 
-Private Sub lbRemoveAll_Click()
-    lbRemoveAll.Caption = accord.Count
-    accord.RemoveAll
-    Call accord.AddItem("Settings Panel", "Contains application settings and configuration options", False, 20, 210, vbBlue)
-End Sub
-
 Private Sub UserForm_Initialize()
     With Me
         .StartUpPosition = 0
@@ -85,5 +85,7 @@ Private Sub UserForm_Initialize()
     With accord.AddItem("Help & Support", "Documentation and support resources", False, 20, 50, vbBlue, 1, 2)
         .TitleLabel.Font.Bold = True
     End With
+    
+    lbVersion.Caption = accord.Version
 
 End Sub

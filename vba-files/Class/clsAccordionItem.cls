@@ -9,6 +9,15 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
+'========================================================================================
+' Class: clsAccordionItem
+' Author: VBATools
+' Version: 1.0.1
+' Creation Date: 21.11.2025 10:59
+' Last Update Date: 21.11.2025 18:18
+' License: Apache License
+'========================================================================================
+
 ' Private variables for managing accordion item controls and state
 Private mParentFrame As MSForms.Frame   ' Parent frame where the item is placed
 Private mItemFrame  As MSForms.Frame    ' Frame for this item
@@ -29,6 +38,18 @@ Private WithEvents mTitleLabel As MSForms.Label  ' Title label
 Attribute mTitleLabel.VB_VarHelpID = -1
 Private WithEvents mTitleBtn As MSForms.Label    ' Title button
 Attribute mTitleBtn.VB_VarHelpID = -1
+
+Public Property Get Version() As String
+    ' Returns version information about the class
+    ' Example: Debug.Print slider.Version
+    Version = "Class: clsAccordionItem" & vbNewLine & _
+            "Author: VBATools" & vbNewLine & _
+            "Version: 1.0.1" & vbNewLine & _
+            "Date of creation: 21.11.2025 10:59" & vbNewLine & _
+            "Date of update: 21.11.2025 18:18" & vbNewLine & _
+            "License: Apache" & vbNewLine & _
+            "Description: Custom accordion item control for VBA UserForms with expandable/collapsible sections, supporting dynamic content management and customizable appearance"
+End Property
 
 ' Get close caption
 Public Property Get CloseCaption() As String
