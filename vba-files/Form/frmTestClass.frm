@@ -14,47 +14,57 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Option Explicit
 
-Dim acord           As clsAccordion
+Dim accord          As clsAccordion
 
 Private Sub chbOpenAll_Change()
-    Call acord.OpenAll(chbOpenAll.Value)
+    Call accord.OpenAll(chbOpenAll.Value)
 End Sub
 
 Private Sub chbEnabled_Click()
-    acord.item(2).Enabled = chbEnabled.Value
+    accord.item(2).Enabled = chbEnabled.Value
 End Sub
 
 Private Sub btnRemoveItem_Click()
-    Debug.Print acord.RemoveItem(2)
+    Debug.Print accord.RemoveItem(2)
+End Sub
+
+Private Sub btnShowItem_Click()
+    ' Show the second item
+    accord.item(2).Visible = True
 End Sub
 
 Private Sub btnGetItems_Click()
-    Debug.Print acord.item(1).Name
+    Debug.Print accord.item(1).Name
 
     Dim coll        As Collection
-    Set coll = acord.Items
+    Set coll = accord.Items
 End Sub
 
 Private Sub btnTitleForeColor_Click()
-    acord.item(2).TitleBtn.ForeColor = vbRed
+    accord.item(2).TitleBtn.ForeColor = vbRed
 End Sub
 
 Private Sub btnColorItem_Click()
-    Debug.Print acord.item(2).BackColor
-    acord.item(2).BackColor = vbRed
+    Debug.Print accord.item(2).BackColor
+    accord.item(2).BackColor = vbRed
 End Sub
 
 Private Sub btnForeColorItem_Click()
-    Debug.Print acord.item(3).ForeColor
-    acord.item(3).ForeColor = vbRed
+    Debug.Print accord.item(3).ForeColor
+    accord.item(3).ForeColor = vbRed
+End Sub
+
+Private Sub chbVisible_Click()
+    accord.item(2).Visible = chbVisible.Value
 End Sub
 
 Private Sub lbRemoveAll_Click()
-    lbRemoveAll.Caption = acord.Count
-    acord.RemoveAll
-    Call acord.AddItem("Settings Panel", "Contains application settings and configuration options", False, 20, 210, vbBlue)
+    lbRemoveAll.Caption = accord.Count
+    accord.RemoveAll
+    Call accord.AddItem("Settings Panel", "Contains application settings and configuration options", False, 20, 210, vbBlue)
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -63,16 +73,16 @@ Private Sub UserForm_Initialize()
         .left = Application.left + 0.5 * (Application.width - .width)
         .Top = Application.Top + 0.5 * (Application.height - .height)
     End With
-    Set acord = New clsAccordion
-    Call acord.Initialize(Frame1, False)
-    Call acord.AddItem("Introduction", "Overview of the accordion control functionality")
+    Set accord = New clsAccordion
+    Call accord.Initialize(Frame1, False)
+    Call accord.AddItem("Introduction", "Overview of the ion control functionality")
 
-    Call acord.AddItem("Configuration", "Application configuration settings", False, 20, 200)
-    Call acord.AddItem("User Preferences", "User-specific preferences and options", False, 20, 200)
-    Call acord.AddItem("Security Settings", "Security and access control options", False, 20, 200)
-    Call acord.AddItem("Display Options", "Display and appearance settings", False, 20, 200)
-    Call acord.AddItem("Advanced Settings", "Advanced configuration options", False, 20, 200)
-    With acord.AddItem("Help & Support", "Documentation and support resources", False, 20, 50, vbBlue, 1, 2)
+    Call accord.AddItem("Configuration", "Application configuration settings", False, 20, 200)
+    Call accord.AddItem("User Preferences", "User-specific preferences and options", False, 20, 200)
+    Call accord.AddItem("Security Settings", "Security and access control options", False, 20, 200)
+    Call accord.AddItem("Display Options", "Display and appearance settings", False, 20, 200)
+    Call accord.AddItem("Advanced Settings", "Advanced configuration options", False, 20, 200)
+    With accord.AddItem("Help & Support", "Documentation and support resources", False, 20, 50, vbBlue, 1, 2)
         .TitleLabel.Font.Bold = True
     End With
 

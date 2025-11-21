@@ -18,6 +18,7 @@ The `clsAccordion` class implements accordion functionality in VBA. It allows cr
 - `Header` - header text
 - `Content` - item content
 - `Expanded` - state (expanded/collapsed)
+- `Visible` - visibility of the item
 - `HeaderControl` - header control element
 - `ContentControl` - content control element
 
@@ -40,6 +41,7 @@ The `clsAccordion` class implements accordion functionality in VBA. It allows cr
 - `Collapse()` - collapses the item
 - `Toggle()` - toggles item state
 - `UpdateLayout()` - updates item layout
+- `Visible` - property to control item visibility (Get/Let)
 
 ## Usage
 

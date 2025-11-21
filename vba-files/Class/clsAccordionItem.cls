@@ -20,6 +20,7 @@ Private mTitleHeight As Single          ' Height of title section
 Private mBodyHeight As Single           ' Height of body section
 Private mNameItem   As String           ' Name of item
 Private mIsOpen     As Boolean          ' State: open/closed
+Private mVisible    As Boolean          ' State: visible/hidden
 Private mbCloseAfterOpen As Boolean     ' Flag: close other items when opening this one
 Private mOpenCaption As String          ' Caption for open state
 Private mCloseCaption As String         ' Caption for close state
@@ -89,11 +90,22 @@ Public Property Let IsOpen(ByVal bOpen As Boolean)
     Call setClick
 End Property
 
+' Get visibility state
+Public Property Get Visible() As Boolean
+    Visible = mVisible
+End Property
+
+' Set visibility state
+Public Property Let Visible(ByVal bVisible As Boolean)
+    mVisible = bVisible
+    mItemFrame.Visible = bVisible
+    Call moveControls_
+End Property
+
 ' Get enabled state
 Public Property Get Enabled() As Boolean
     Enabled = mTitleBtn.Enabled
 End Property
-
 ' Set enabled state
 Public Property Let Enabled(ByVal bEnabled As Boolean)
     mTitleBtn.Enabled = bEnabled
@@ -130,20 +142,23 @@ Public Sub moveControls_()
     ' Loop through all items
     For Each item In mItems
         With item
-            ' If auto-close is enabled, close other open items
-            If mbCloseAfterOpen Then
-                If .IsOpen And mNameItem <> .Name Then
-                    ' Close item (update height and caption)
-                    .ItemFrame.height = mTitleHeight
-                    .TitleBtn.Caption = mCloseCaption
-                    .IsOpen = False ' Update internal state
+            ' Skip invisible items
+            If .Visible Then
+                ' If auto-close is enabled, close other open items
+                If mbCloseAfterOpen Then
+                    If .IsOpen And mNameItem <> .Name Then
+                        ' Close item (update height and caption)
+                        .ItemFrame.height = mTitleHeight
+                        .TitleBtn.Caption = mCloseCaption
+                        .IsOpen = False ' Update internal state
+                    End If
                 End If
+                ' Update position of item frame
+                With .ItemFrame
+                    .Top = sngTop
+                    sngTop = .Top + .height
+                End With
             End If
-            ' Update position of item frame
-            With .ItemFrame
-                .Top = sngTop
-                sngTop = .Top + .height
-            End With
         End With
     Next item
 End Sub
@@ -212,6 +227,7 @@ Public Sub AddItem_(ByRef Parent As clsAccordion, ByRef ParentFrame As MSForms.F
         .Locked = LockedBoby
     End With
     mIsOpen = False
+    mVisible = True  ' By default, item is visible
     Set mItems = coll
     mbCloseAfterOpen = CloseAfterOpen
     Set mParent = Parent
@@ -229,6 +245,9 @@ End Sub
 
 ' Toggle open state and update UI
 Private Sub setClick()
+    ' Check if item is visible before processing
+    If Not mVisible Then Exit Sub
+
     ' Update state
     If mIsOpen Then
         mTitleBtn.Caption = mCloseCaption
@@ -245,8 +264,8 @@ Private Sub setClick()
     ' Update scrollbar settings
     With mParentFrame
         Dim snHeight As Single
-        ' Calculate total height needed for all items
-        snHeight = mItems(mItems.Count).ItemFrame.Top + mItems(mItems.Count).ItemFrame.height
+        ' Calculate total height needed for all visible items
+        snHeight = calculateVisibleHeight()
         If .height <= snHeight Then
             ' If content exceeds frame height, show scrollbar
             .ScrollHeight = snHeight
@@ -282,12 +301,31 @@ Private Sub changeWidth(ByRef snWidth As Single, ByRef ScrolShow As fmScrollBars
     Dim i As Long
     For i = 1 To mItems.Count
         With mItems(i)
-            .ItemFrame.width = snWidth - delta
-            .BodyTxtBox.width = snWidth - delta
-            .TitleBtn.left = .ItemFrame.width * 0.9
+            ' Only update width for visible items
+            If .Visible Then
+                .ItemFrame.width = snWidth - delta
+                .BodyTxtBox.width = snWidth - delta
+                .TitleBtn.left = .ItemFrame.width * 0.9
+            End If
         End With
     Next i
 End Sub
+
+' Calculate total height of all visible items
+Private Function calculateVisibleHeight() As Single
+    Dim item As clsAccordionItem
+    Dim totalHeight As Single
+    totalHeight = 0
+    
+    ' Loop through all items and sum height of visible items only
+    For Each item In mItems
+        If item.Visible Then
+            totalHeight = totalHeight + item.ItemFrame.height
+        End If
+    Next item
+    
+    calculateVisibleHeight = totalHeight
+End Function
 
 ' Cleanup when object is terminated
 Private Sub Class_Terminate()
@@ -295,5 +333,6 @@ Private Sub Class_Terminate()
     Set mTitleLabel = Nothing
     Set mBodyTxtBox = Nothing
     Set mTitleBtn = Nothing
+    Set mItems = Nothing
+    Set mParent = Nothing
 End Sub
-

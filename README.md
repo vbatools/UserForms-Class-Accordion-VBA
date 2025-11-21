@@ -23,6 +23,7 @@ This repository contains a VBA implementation of the Accordion class. The class 
 - Integration with existing forms
 - Support for events when opening/closing elements
 - Flexible styling system
+- Control of item visibility with the new Visible property
 
 ## Components
 
@@ -40,7 +41,7 @@ This repository contains a VBA implementation of the Accordion class. The class 
 
 ## Installation
 
-1. Download the `acardion_v3.xlsm` file
+1. Download the `accordion_v3.xlsm` file
 2. Open it in Excel
 3. In the VBA editor, import the `clsAccordion.cls` and `clsAccordionItem.cls` classes into your project
 4. If needed, add the `modShowForms.bas` module and `frmTestClass.frm` form for testing

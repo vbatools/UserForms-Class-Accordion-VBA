@@ -26,8 +26,11 @@ Public Sub OpenAll(ByVal bOpen As Boolean)
     Dim i           As Long    ' Loop variable using Long for compatibility with collection indices
     For i = 1 To Me.Count
         With Me.item(i)
-            If .IsOpen <> bOpen And .Enabled = True Then
-                .IsOpen = bOpen
+            ' Only process visible items
+            If .Visible And .Enabled = True Then
+                If .IsOpen <> bOpen Then
+                    .IsOpen = bOpen
+                End If
             End If
         End With
     Next i
@@ -84,6 +87,8 @@ Public Function AddItem(ByRef sTitle As String, ByRef sBody As String, Optional 
             TitleHeight, BodyHeight, Locked, ForeColorBtn, mCloseAfterOpen, OpenCaption, CloseCaption)
     Call mItems.Add(acordItem, acordItem.Name)
     mTopItem = mTopItem + TitleHeight
+    ' Update positions of all items after adding new one
+    Call moveControls_
     Set AddItem = acordItem
 End Function
 
@@ -99,6 +104,8 @@ Public Sub RemoveAll()
     Set mItems = New Collection
     mTopItem = 0
     mItemCount = 0
+    ' Update positions after clearing all items
+    Call moveControls_
 End Sub
 
 ' Remove item by index
@@ -116,15 +123,25 @@ Public Function RemoveItem(ByVal index As Long) As Boolean    ' Using Long for i
         Call .Parent.Controls.Remove(.ItemFrame.Name)
         On Error GoTo 0
         Call mItems.Remove(index)
-        Call .moveControls_
+        ' Update positions of remaining items after removal
+        Call moveControls_
     End With
     Set acordItem = Nothing
     RemoveItem = True
 End Function
+
+' Move controls to update positions when items are added/removed
+Private Sub moveControls_()
+    ' Call moveControls_ for the first item to update all positions
+    If mItems.Count > 0 Then
+        Dim firstItem As clsAccordionItem
+        Set firstItem = mItems(1)
+        Call firstItem.moveControls_
+    End If
+End Sub
 
 ' Cleanup when object is terminated
 Private Sub Class_Terminate()
     Set mItems = Nothing
     Set mParentFrame = Nothing
 End Sub
-
