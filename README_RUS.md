@@ -1,8 +1,8 @@
-# Класс VBA Acordion
+# Класс VBA Accordion
 
 ![Демонстрация проекта](Project_Image.gif)
 
-Этот репозиторий содержит реализацию на VBA класса Acordion. Класс обеспечивает создание интерактивных аккордеонов с настраиваемым внешним видом и поведением.
+Этот репозиторий содержит реализацию на VBA класса Accordion. Класс обеспечивает создание интерактивных аккордеонов с настраиваемым внешним видом и поведением.
 
 ## Содержание
 1. [Возможности](#возможности)
@@ -26,23 +26,23 @@
 
 ## Компоненты
 
-- [`vba-files/Class/clsAcardion.cls`](vba-files/Class/clsAcardion.cls): Основная реализация класса
-- [`vba-files/Class/clsAcardionItem.cls`](vba-files/Class/clsAcardionItem.cls): Реализация элемента аккордеона
+- [`vba-files/Class/clsAccordion.cls`](vba-files/Class/clsAccordion.cls): Основная реализация класса
+- [`vba-files/Class/clsAccordionItem.cls`](vba-files/Class/clsAccordionItem.cls): Реализация элемента аккордеона
 - [`vba-files/Form/frmTestClass.frm`](vba-files/Form/frmTestClass.frm): Тестовая форма, демонстрирующая использование
 - [`vba-files/Module/modShowForms.bas`](vba-files/Module/modShowForms.bas): Модуль, содержащий функции отображения форм
 - Документация в папке `docs/`:
   - [`docs/technical_documentation_rus.md`](docs/technical_documentation_rus.md) - Техническая документация на русском языке
   - [`docs/technical_documentation_eng.md`](docs/technical_documentation_eng.md) - Техническая документация на английском языке
   - [`docs/user_guide_rus.md`](docs/user_guide_rus.md) - Руководство пользователя на русском языке
-  - [`docs/user_guide_eng.md`](docs/user_guide_eng.md) - Руководство пользователя на английском языке
-  - [`docs/implementation_examples_rus.md`](docs/implementation_examples_rus.md) - Примеры реализации на русском языке
+ - [`docs/user_guide_eng.md`](docs/user_guide_eng.md) - Руководство пользователя на английском языке
+ - [`docs/implementation_examples_rus.md`](docs/implementation_examples_rus.md) - Примеры реализации на русском языке
   - [`docs/implementation_examples_eng.md`](docs/implementation_examples_eng.md) - Примеры реализации на английском языке
 
 ## Установка
 
 1. Скачайте файл `acardion_v3.xlsm`
 2. Откройте его в Excel
-3. В VBA редакторе импортируйте классы `clsAcardion.cls` и `clsAcardionItem.cls` в свой проект
+3. В VBA редакторе импортируйте классы `clsAccordion.cls` и `clsAccordionItem.cls` в свой проект
 4. При необходимости добавьте модуль `modShowForms.bas` и форму `frmTestClass.frm` для тестирования
 
 ## Быстрый старт
@@ -51,16 +51,17 @@
 
 ### Простой пример использования
 ```vba
-Dim acardion As New clsAcardion
-acardion.SetParentForm Me ' Указываем родительскую форму
-acardion.AddItem "Заголовок 1", "Содержимое первого элемента"
-acardion.AddItem "Заголовок 2", "Содержимое второго элемента"
-acardion.CreateControls ' Создаем элементы управления
+Dim accordion As clsAccordion
+Set accordion = New clsAccordion
+accordion.SetParentForm Me ' Указываем родительскую форму
+accordion.AddItem "Заголовок 1", "Содержимое первого элемента"
+accordion.AddItem "Заголовок 2", "Содержимое второго элемента"
+accordion.CreateControls ' Создаем элементы управления
 ```
 
 ## Основные функции
 
-Класс `clsAcardion` предоставляет следующие основные функции:
+Класс `clsAccordion` предоставляет следующие основные функции:
 - `AddItem` - добавление нового элемента аккордеона
 - `RemoveItem` - удаление элемента аккордеона
 - `ClearItems` - очистка всех элементов
@@ -71,7 +72,7 @@ acardion.CreateControls ' Создаем элементы управления
 
 ## Работа с элементами управления
 
-Каждый элемент аккордеона представлен классом `clsAcardionItem`, который позволяет:
+Каждый элемент аккордеона представлен классом `clsAccordionItem`, который позволяет:
 - Управлять видимостью элемента
 - Изменять заголовок и содержимое
 - Настройка внешнего вида

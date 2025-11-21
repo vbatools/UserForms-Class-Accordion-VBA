@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The `clsAcardion` class provides a convenient way to create accordions (collapsible panels) in VBA applications. This component allows users to control the display of information, enabling them to expand and collapse content as needed.
+The `clsAccordion` class provides a convenient way to create accordions (collapsible panels) in VBA applications. This component allows users to control the display of information, enabling them to expand and collapse content as needed.
 
 ## Installation and Setup
 
-1. Import the class files `clsAcardion.cls` and `clsAcardionItem.cls` into your VBA project
+1. Import the class files `clsAccordion.cls` and `clsAccordionItem.cls` into your VBA project
 2. If needed, add the module `modShowForms.bas` and form `frmTestClass.frm` for testing
 
 ## Basic Usage
@@ -16,11 +16,12 @@ The `clsAcardion` class provides a convenient way to create accordions (collapsi
 To create a basic accordion, follow these steps:
 
 ```vba
-Dim acardion As New clsAcardion
-acardion.SetParentForm Me ' Set the parent form
-acardion.AddItem "Header 1", "Content of first item"
-acardion.AddItem "Header 2", "Content of second item"
-acardion.CreateControls ' Create the controls
+Dim accordion As clsAccordion
+Set accordion = New clsAccordion
+accordion.SetParentForm Me ' Set the parent form
+accordion.AddItem "Header 1", "Content of first item"
+accordion.AddItem "Header 2", "Content of second item"
+accordion.CreateControls ' Create the controls
 ```
 
 ### Adding Items
@@ -63,7 +64,7 @@ acardion.SetAnimation 5 ' Set animation speed (1-10)
 Access individual items:
 
 ```vba
-Dim item As clsAcardionItem
+Dim item As clsAccordionItem
 Set item = acardion.Items(0) ' Get the first item
 item.Expand ' Expand a specific item
 ```
@@ -74,7 +75,7 @@ item.Expand ' Expand a specific item
 
 ```vba
 Sub CreateSimpleAccordion()
-    Dim acardion As New clsAcardion
+    Dim acardion As New clsAccordion
     acardion.SetParentForm Me
     
     acardion.AddItem "Description", "This is the description section"
@@ -89,7 +90,7 @@ End Sub
 
 ```vba
 Sub CreateStyledAccordion()
-    Dim acardion As New clsAcardion
+    Dim acardion As New clsAccordion
     acardion.SetParentForm Me
     
     ' Add items

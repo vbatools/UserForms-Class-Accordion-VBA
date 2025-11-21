@@ -2,7 +2,7 @@
 
 ## Введение
 
-Этот документ содержит различные примеры реализации класса `clsAcardion` в VBA. Примеры охватывают базовые и продвинутые сценарии использования, демонстрируя гибкость и функциональность класса.
+Этот документ содержит различные примеры реализации класса `clsAccordion` в VBA. Примеры охватывают базовые и продвинутые сценарии использования, демонстрируя гибкость и функциональность класса.
 
 ## Пример 1: Простой аккордеон на форме
 
@@ -12,16 +12,17 @@
 ### Код
 ```vba
 Sub CreateSimpleAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
     ' Добавляем элементы аккордеона
-    acardion.AddItem "Введение", "Это вводная информация о проекте"
-    acardion.AddItem "Функции", "Список основных функций приложения"
-    acardion.AddItem "Контакты", "Информация для связи с разработчиком"
+    accordion.AddItem "Введение", "Это вводная информация о проекте"
+    accordion.AddItem "Функции", "Список основных функций приложения"
+    accordion.AddItem "Контакты", "Информация для связи с разработчиком"
     
     ' Создаем элементы управления на форме
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -33,20 +34,21 @@ End Sub
 ### Код
 ```vba
 Sub CreateStyledAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
     ' Настройка внешнего вида
-    acardion.HeaderHeight = 35
-    acardion.SetStyle RGB(65, 105, 225), RGB(248, 248, 255) ' Синие заголовки, почти белое содержимое
-    acardion.SetAnimation 6 ' Средняя скорость анимации
+    accordion.HeaderHeight = 35
+    accordion.SetStyle RGB(65, 105, 225), RGB(248, 248, 255) ' Синие заголовки, почти белое содержимое
+    accordion.SetAnimation 6 ' Средняя скорость анимации
     
     ' Добавляем элементы
-    acardion.AddItem "Настройки интерфейса", "Параметры внешнего вида приложения"
-    acardion.AddItem "Настройки безопасности", "Параметры защиты данных"
-    acardion.AddItem "Настройки производительности", "Параметры оптимизации работы"
+    accordion.AddItem "Настройки интерфейса", "Параметры внешнего вида приложения"
+    accordion.AddItem "Настройки безопасности", "Параметры защиты данных"
+    accordion.AddItem "Настройки производительности", "Параметры оптимизации работы"
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -58,8 +60,9 @@ End Sub
 ### Код
 ```vba
 Sub CreateDynamicAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
     ' Массив с данными для аккордеона
     Dim headers(1 To 3) As String
@@ -75,10 +78,10 @@ Sub CreateDynamicAccordion()
     ' Добавляем элементы из массива
     Dim i As Integer
     For i = 1 To 3
-        acardion.AddItem headers(i), contents(i)
+        accordion.AddItem headers(i), contents(i)
     Next i
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 ```
 
@@ -90,22 +93,23 @@ End Sub
 ### Код
 ```vba
 Sub CreateEventHandlingAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
     ' Добавляем элементы
-    acardion.AddItem "Данные пользователя", "Информация о текущем пользователе"
-    acardion.AddItem "Настройки профиля", "Параметры настройки профиля"
-    acardion.AddItem "История действий", "Журнал действий пользователя"
+    accordion.AddItem "Данные пользователя", "Информация о текущем пользователе"
+    accordion.AddItem "Настройки профиля", "Параметры настройки профиля"
+    accordion.AddItem "История действий", "Журнал действий пользователя"
     
     ' Создаем элементы управления
-    acardion.CreateControls
+    accordion.CreateControls
     
     ' Обработка событий (псевдокод - в реальной реализации потребуется дополнительная настройка)
     ' При раскрытии элемента
-    ' Call acardion.OnItemExpanded(AddressOf HandleItemExpanded)
+    ' Call accordion.OnItemExpanded(AddressOf HandleItemExpanded)
     ' При сворачивании элемента
-    ' Call acardion.OnItemCollapsed(AddressOf HandleItemCollapsed)
+    ' Call accordion.OnItemCollapsed(AddressOf HandleItemCollapsed)
 End Sub
 
 ' Подпрограммы обработки событий
@@ -126,7 +130,8 @@ End Sub
 ### Код
 ```vba
 Sub CreateNestedAccordion()
-    Dim mainAcardion As New clsAcardion
+    Dim mainAcardion As clsAccordion
+    Set mainAcardion = New clsAccordion
     mainAcardion.SetParentForm Me
     
     ' Создаем основной аккордеон
@@ -135,7 +140,8 @@ Sub CreateNestedAccordion()
     mainAcardion.AddItem "Категория 3", ""
     
     ' Для второй категории создаем вложенный аккордеон
-    Dim nestedAcardion As New clsAcardion
+    Dim nestedAcardion As clsAccordion
+    Set nestedAcardion = New clsAccordion
     nestedAcardion.SetParentForm Me
     nestedAcardion.HeaderHeight = 25 ' Меньшая высота для вложенных элементов
     
@@ -159,15 +165,16 @@ End Sub
 ### Код
 ```vba
 Sub CreateActionAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
-    ' Добавляем элементы с содержимым, включающим кнопки
-    acardion.AddItem "Резервное копирование", "Создать резервную копию данных" & vbCrLf & "Кнопка: [Создать резерв]"
-    acardion.AddItem "Очистка данных", "Очистить временные файлы" & vbCrLf & "Кнопка: [Очистить]"
-    acardion.AddItem "Экспорт отчета", "Экспортировать отчет в Excel" & vbCrLf & "Кнопка: [Экспортировать]"
+    ' Добавляем элементы содержимым, включающим кнопки
+    accordion.AddItem "Резервное копирование", "Создать резервную копию данных" & vbCrLf & "Кнопка: [Создать резерв]"
+    accordion.AddItem "Очистка данных", "Очистить временные файлы" & vbCrLf & "Кнопка: [Очистить]"
+    accordion.AddItem "Экспорт отчета", "Экспортировать отчет в Excel" & vbCrLf & "Кнопка: [Экспортировать]"
     
-    acardion.CreateControls
+    accordion.CreateControls
     
     ' Добавляем обработчики для кнопок (требует дополнительной реализации)
     ' Это может потребовать модификации класса для поддержки встраивания кнопок
@@ -182,13 +189,14 @@ End Sub
 ### Код
 ```vba
 Sub CreateStatePreservingAccordion()
-    Dim acardion As New clsAcardion
-    acardion.SetParentForm Me
+    Dim accordion As clsAccordion
+    Set accordion = New clsAccordion
+    accordion.SetParentForm Me
     
     ' Добавляем элементы
-    acardion.AddItem "Настройки подключения", "Параметры подключения к базе данных"
-    acardion.AddItem "Настройки отчетов", "Параметры формирования отчетов"
-    acardion.AddItem "Настройки интерфейса", "Параметры внешнего вида приложения"
+    accordion.AddItem "Настройки подключения", "Параметры подключения к базе данных"
+    accordion.AddItem "Настройки отчетов", "Параметры формирования отчетов"
+    accordion.AddItem "Настройки интерфейса", "Параметры внешнего вида приложения"
     
     ' Восстанавливаем состояние из сохраненных данных (псевдокод)
     ' Dim savedStates As Variant
@@ -197,29 +205,29 @@ Sub CreateStatePreservingAccordion()
     ' Применяем сохраненное состояние
     ' If IsArray(savedStates) Then
     '     Dim i As Integer
-    '     For i = 0 To acardion.Items.Count - 1
+    '     For i = 0 To accordion.Items.Count - 1
     '         If i < UBound(savedStates) + 1 Then
     '             If savedStates(i) = True Then
-    '                 acardion.Items(i).Expand
+    '                 accordion.Items(i).Expand
     '             Else
-    '                 acardion.Items(i).Collapse
+    '                 accordion.Items(i).Collapse
     '             End If
     '         End If
     '     Next i
     ' End If
     
-    acardion.CreateControls
+    accordion.CreateControls
 End Sub
 
 ' Подпрограмма сохранения состояния
-Sub SaveAccordionState(acardion As clsAcardion)
+Sub SaveAccordionState(accordion As clsAccordion)
     ' Сохраняем состояние каждого элемента
     Dim states() As Boolean
-    ReDim states(0 To acardion.Items.Count - 1)
+    ReDim states(0 To accordion.Items.Count - 1)
     
     Dim i As Integer
-    For i = 0 To acardion.Items.Count - 1
-        states(i) = acardion.Items(i).Expanded
+    For i = 0 To accordion.Items.Count - 1
+        states(i) = accordion.Items(i).Expanded
     Next i
     
     ' Сохраняем массив в постоянное хранилище (например, в настройки приложения)
@@ -229,4 +237,4 @@ End Sub
 
 ## Заключение
 
-Эти примеры демонстрируют различные способы использования класса `clsAcardion` в VBA проектах. Вы можете адаптировать и комбинировать эти примеры в зависимости от ваших конкретных требований и сценариев использования.
+Эти примеры демонстрируют различные способы использования класса `clsAccordion` в VBA проектах. Вы можете адаптировать и комбинировать эти примеры в зависимости от ваших конкретных требований и сценариев использования.

@@ -14,10 +14,9 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
-
 Option Explicit
 
-Dim acord           As clsAcardion
+Dim acord           As clsAccordion
 
 Private Sub chbOpenAll_Change()
     Call acord.OpenAll(chbOpenAll.Value)
@@ -55,7 +54,7 @@ End Sub
 Private Sub lbRemoveAll_Click()
     lbRemoveAll.Caption = acord.Count
     acord.RemoveAll
-    Call acord.AddItem("Level 5 text", "Level 1 text text", False, 20, 210, vbBlue)
+    Call acord.AddItem("Settings Panel", "Contains application settings and configuration options", False, 20, 210, vbBlue)
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -64,16 +63,16 @@ Private Sub UserForm_Initialize()
         .left = Application.left + 0.5 * (Application.width - .width)
         .Top = Application.Top + 0.5 * (Application.height - .height)
     End With
-    Set acord = New clsAcardion
+    Set acord = New clsAccordion
     Call acord.Initialize(Frame1, False)
-    Call acord.AddItem("Level 1 text", "Level  1 text text")
+    Call acord.AddItem("Introduction", "Overview of the accordion control functionality")
 
-    Call acord.AddItem("Level 2 text", "Level 2 text text", False, 20, 200)
-    Call acord.AddItem("Level 21 text", "Level 2 text text", False, 20, 200)
-    Call acord.AddItem("Level 22 text", "Level 2 text text", False, 20, 200)
-    Call acord.AddItem("Level 23 text", "Level 2 text text", False, 20, 200)
-    Call acord.AddItem("Level 24 text", "Level 2 text text", False, 20, 200)
-    With acord.AddItem("Level 3 text", "Level 3 text text text text text text", False, 20, 50, vbBlue, 1, 2)
+    Call acord.AddItem("Configuration", "Application configuration settings", False, 20, 200)
+    Call acord.AddItem("User Preferences", "User-specific preferences and options", False, 20, 200)
+    Call acord.AddItem("Security Settings", "Security and access control options", False, 20, 200)
+    Call acord.AddItem("Display Options", "Display and appearance settings", False, 20, 200)
+    Call acord.AddItem("Advanced Settings", "Advanced configuration options", False, 20, 200)
+    With acord.AddItem("Help & Support", "Documentation and support resources", False, 20, 50, vbBlue, 1, 2)
         .TitleLabel.Font.Bold = True
     End With
 

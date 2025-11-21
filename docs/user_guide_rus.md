@@ -2,11 +2,11 @@
 
 ## Введение
 
-Класс `clsAcardion` предоставляет удобный способ создания аккордеонов (сворачивающихся панелей) в VBA приложениях. Этот компонент позволяет пользователям управлять отображением информации, позволяя раскрывать и скрывать содержимое по мере необходимости.
+Класс `clsAccordion` предоставляет удобный способ создания аккордеонов (сворачивающихся панелей) в VBA приложениях. Этот компонент позволяет пользователям управлять отображением информации, позволяя раскрывать и скрывать содержимое по мере необходимости.
 
 ## Установка и настройка
 
-1. Импортируйте файлы классов `clsAcardion.cls` и `clsAcardionItem.cls` в ваш VBA проект
+1. Импортируйте файлы классов `clsAccordion.cls` и `clsAccordionItem.cls` в ваш VBA проект
 2. При необходимости добавьте модуль `modShowForms.bas` и форму `frmTestClass.frm` для тестирования
 
 ## Базовое использование
@@ -16,11 +16,12 @@
 Для создания базового аккордеона выполните следующие шаги:
 
 ```vba
-Dim acardion As New clsAcardion
-acardion.SetParentForm Me ' Устанавливаем родительскую форму
-acardion.AddItem "Заголовок 1", "Содержимое первого элемента"
-acardion.AddItem "Заголовок 2", "Содержимое второго элемента"
-acardion.CreateControls ' Создаем элементы управления
+Dim accordion As clsAccordion
+Set accordion = New clsAccordion
+accordion.SetParentForm Me ' Устанавливаем родительскую форму
+accordion.AddItem "Заголовок 1", "Содержимое первого элемента"
+accordion.AddItem "Заголовок 2", "Содержимое второго элемента"
+accordion.CreateControls ' Создаем элементы управления
 ```
 
 ### Добавление элементов
@@ -63,7 +64,7 @@ acardion.SetAnimation 5 ' Установка скорости анимации (
 Доступ к отдельным элементам:
 
 ```vba
-Dim item As clsAcardionItem
+Dim item As clsAccordionItem
 Set item = acardion.Items(0) ' Получаем первый элемент
 item.Expand ' Развертываем конкретный элемент
 ```
@@ -74,7 +75,7 @@ item.Expand ' Развертываем конкретный элемент
 
 ```vba
 Sub CreateSimpleAccordion()
-    Dim acardion As New clsAcardion
+    Dim acardion As New clsAccordion
     acardion.SetParentForm Me
     
     acardion.AddItem "Описание", "Это раздел с описанием"
@@ -89,7 +90,7 @@ End Sub
 
 ```vba
 Sub CreateStyledAccordion()
-    Dim acardion As New clsAcardion
+    Dim acardion As New clsAccordion
     acardion.SetParentForm Me
     
     ' Добавляем элементы

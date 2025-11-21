@@ -1,8 +1,8 @@
-# VBA Acordion Class
+# VBA Accordion Class
 
 ![Project Demo](Project_Image.gif)
 
-This repository contains a VBA implementation of the Acordion class. The class provides creation of interactive accordions with customizable appearance and behavior.
+This repository contains a VBA implementation of the Accordion class. The class provides creation of interactive accordions with customizable appearance and behavior.
 
 ## Contents
 1. [Features](#features)
@@ -26,8 +26,8 @@ This repository contains a VBA implementation of the Acordion class. The class p
 
 ## Components
 
-- [`vba-files/Class/clsAcardion.cls`](vba-files/Class/clsAcardion.cls): Main class implementation
-- [`vba-files/Class/clsAcardionItem.cls`](vba-files/Class/clsAcardionItem.cls): Accordion item implementation
+- [`vba-files/Class/clsAccordion.cls`](vba-files/Class/clsAccordion.cls): Main class implementation
+- [`vba-files/Class/clsAccordionItem.cls`](vba-files/Class/clsAccordionItem.cls): Accordion item implementation
 - [`vba-files/Form/frmTestClass.frm`](vba-files/Form/frmTestClass.frm): Test form demonstrating usage
 - [`vba-files/Module/modShowForms.bas`](vba-files/Module/modShowForms.bas): Module containing form display functions
 - Documentation in the `docs/` folder:
@@ -42,7 +42,7 @@ This repository contains a VBA implementation of the Acordion class. The class p
 
 1. Download the `acardion_v3.xlsm` file
 2. Open it in Excel
-3. In the VBA editor, import the `clsAcardion.cls` and `clsAcardionItem.cls` classes into your project
+3. In the VBA editor, import the `clsAccordion.cls` and `clsAccordionItem.cls` classes into your project
 4. If needed, add the `modShowForms.bas` module and `frmTestClass.frm` form for testing
 
 ## Quick Start
@@ -51,16 +51,17 @@ To start working with the accordion class, create an instance of the class and c
 
 ### Simple Usage Example
 ```vba
-Dim acardion As New clsAcardion
-acardion.SetParentForm Me ' Specify the parent form
-acardion.AddItem "Header 1", "Content of first item"
-acardion.AddItem "Header 2", "Content of second item"
-acardion.CreateControls ' Create the controls
+Dim accordion As clsAccordion
+Set accordion = New clsAccordion
+accordion.SetParentForm Me ' Specify the parent form
+accordion.AddItem "Header 1", "Content of first item"
+accordion.AddItem "Header 2", "Content of second item"
+accordion.CreateControls ' Create the controls
 ```
 
 ## Main Functions
 
-The `clsAcardion` class provides the following main functions:
+The `clsAccordion` class provides the following main functions:
 - `AddItem` - adding a new accordion item
 - `RemoveItem` - removing an accordion item
 - `ClearItems` - clearing all items
@@ -71,7 +72,7 @@ The `clsAcardion` class provides the following main functions:
 
 ## Working with Controls
 
-Each accordion item is represented by the `clsAcardionItem` class, which allows:
+Each accordion item is represented by the `clsAccordionItem` class, which allows:
 - Control item visibility
 - Change header and content
 - Appearance customization

@@ -1,12 +1,12 @@
-# Technical Documentation for VBA Acordion Class
+# Technical Documentation for VBA Accordion Class
 
 ## Overview
 
-The `clsAcardion` class implements accordion functionality in VBA. It allows creating interactive controls that can expand and collapse. The class consists of the main `clsAcardion` class and an auxiliary `clsAcardionItem` class representing a single accordion item.
+The `clsAccordion` class implements accordion functionality in VBA. It allows creating interactive controls that can expand and collapse. The class consists of the main `clsAccordion` class and an auxiliary `clsAccordionItem` class representing a single accordion item.
 
 ## Class Structure
 
-### clsAcardion
+### clsAccordion
 - `ParentForm` - reference to the parent form
 - `Items` - collection of accordion items
 - `HeaderHeight` - header height
@@ -14,7 +14,7 @@ The `clsAcardion` class implements accordion functionality in VBA. It allows cre
 - `HeaderColor` - header color
 - `ContentColor` - content color
 
-### clsAcardionItem
+### clsAccordionItem
 - `Header` - header text
 - `Content` - item content
 - `Expanded` - state (expanded/collapsed)
@@ -23,7 +23,7 @@ The `clsAcardion` class implements accordion functionality in VBA. It allows cre
 
 ## Methods
 
-### clsAcardion
+### clsAccordion
 - `AddItem(Header As String, Content As String)` - adds a new item
 - `RemoveItem(Index As Integer)` - removes item by index
 - `ClearItems()` - clears all items
@@ -33,7 +33,7 @@ The `clsAcardion` class implements accordion functionality in VBA. It allows cre
 - `SetStyle(HeaderColor As Long, ContentColor As Long)` - sets styles
 - `SetAnimation(Speed As Integer)` - sets animation speed
 
-### clsAcardionItem
+### clsAccordionItem
 - `SetHeader(Header As String)` - sets header text
 - `SetContent(Content As String)` - sets content
 - `Expand()` - expands the item
@@ -43,7 +43,7 @@ The `clsAcardion` class implements accordion functionality in VBA. It allows cre
 
 ## Usage
 
-1. Create an instance of `clsAcardion` class
+1. Create an instance of `clsAccordion` class
 2. Set parent form using `SetParentForm`
 3. Add items using `AddItem`
 4. Call `CreateControls` to create controls on the form
@@ -52,11 +52,12 @@ The `clsAcardion` class implements accordion functionality in VBA. It allows cre
 ## Code Example
 
 ```vba
-Dim acardion As New clsAcardion
-acardion.SetParentForm Me
-acardion.AddItem "Item 1", "Content of first item"
-acardion.AddItem "Item 2", "Content of second item"
-acardion.CreateControls
+Dim accordion As clsAccordion
+Set accordion = New clsAccordion
+accordion.SetParentForm Me
+accordion.AddItem "Item 1", "Content of first item"
+accordion.AddItem "Item 2", "Content of second item"
+accordion.CreateControls
 ```
 
 ## Events
