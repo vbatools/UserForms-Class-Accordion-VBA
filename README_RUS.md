@@ -1,6 +1,6 @@
 # Класс VBA Accordion
 
-![Демонстрация проекта](Project_Image.gif)
+![Демонстрация проекта](User_Forms.gif)
 
 Этот репозиторий содержит реализацию на VBA класса Accordion. Класс обеспечивает создание интерактивных аккордеонов с настраиваемым внешним видом и поведением.
 
@@ -35,8 +35,8 @@
   - [`docs/technical_documentation_rus.md`](docs/technical_documentation_rus.md) - Техническая документация на русском языке
   - [`docs/technical_documentation_eng.md`](docs/technical_documentation_eng.md) - Техническая документация на английском языке
   - [`docs/user_guide_rus.md`](docs/user_guide_rus.md) - Руководство пользователя на русском языке
- - [`docs/user_guide_eng.md`](docs/user_guide_eng.md) - Руководство пользователя на английском языке
- - [`docs/implementation_examples_rus.md`](docs/implementation_examples_rus.md) - Примеры реализации на русском языке
+  - [`docs/user_guide_eng.md`](docs/user_guide_eng.md) - Руководство пользователя на английском языке
+  - [`docs/implementation_examples_rus.md`](docs/implementation_examples_rus.md) - Примеры реализации на русском языке
   - [`docs/implementation_examples_eng.md`](docs/implementation_examples_eng.md) - Примеры реализации на английском языке
 
 ## Установка

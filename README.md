@@ -1,6 +1,6 @@
 # VBA Accordion Class
 
-![Project Demo](Project_Image.gif)
+![Project Demo](User_Forms.gif)
 
 This repository contains a VBA implementation of the Accordion class. The class provides creation of interactive accordions with customizable appearance and behavior.
 
