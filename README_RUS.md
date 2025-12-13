@@ -1,5 +1,7 @@
 # Класс VBA Accordion
 
+**Русский** | [English](README.md) | [UserForms-Class-ALL](https://github.com/vbatools/UserForms-Class-ALL/blob/main/README_RUS.md)
+
 ![Демонстрация проекта](User_Forms.gif)
 
 Этот репозиторий содержит реализацию на VBA класса Accordion. Класс обеспечивает создание интерактивных аккордеонов с настраиваемым внешним видом и поведением.
